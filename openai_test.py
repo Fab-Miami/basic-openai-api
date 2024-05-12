@@ -42,8 +42,16 @@ def main():
         }
 
         response = requests.post(url, headers=headers, json=data)
+
+        if response.status_code != 200:
+            print("Error: ", response.json())
+            break
+
         # print("\nRAWjson: ", response.json())
         print("\n\nGPT: ", response.json()['choices'][0]['message']['content'])
 
 if __name__ == "__main__":
     main()
+
+
+# run the script by typing: python openai_test.py
